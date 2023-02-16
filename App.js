@@ -7,14 +7,14 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-// Initialize Firebase
+
 const firebaseConfig = {
   // Your Firebase config goes here
 };
 
 firebase.initializeApp(firebaseConfig);
 
-// Login Screen
+// Login 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
 });
 
-// Product Stack Navigator
+// Stack Navigator
 const ProductStackNavigator = createStackNavigator({
   Product: {
     screen: ProductScreen,
@@ -137,7 +137,6 @@ const DrawerNavigator = createDrawerNavigator({
   },
 });
 
-// Product Page with Stack, Top Tab, Bottom Tab, and Drawer Navigation
 const ProductPage = createStackNavigator(
   {
     ProductStack: {
@@ -156,7 +155,7 @@ const ProductPage = createStackNavigator(
     const index = navigation.state.index;
     const activeRoute = navigation.state.routes[index];
     
-    // Display the top tab navigator for the Tab1 or Tab2 screen
+   
     if (activeRoute.routeName === 'Tab1' || activeRoute.routeName === 'Tab2') {
     return {
     header: null,
@@ -164,7 +163,6 @@ const ProductPage = createStackNavigator(
     };
     }
     
-    // Display the bottom tab navigator for the other screens
     return {
     header: null,
     tabBarComponent: props => <BottomTabNavigator {...props} />,
